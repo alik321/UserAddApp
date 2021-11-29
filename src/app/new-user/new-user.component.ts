@@ -1,15 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild} from '@angular/core';
+import { User } from '../shared/users.module';
+import { ServiseUsers } from '../shared/users.service';
 
 @Component({
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
-  styleUrls: ['./new-user.component.css']
+  styleUrls: ['./new-user.component.css'],
 })
-export class NewUserComponent implements OnInit {
+export class NewUserComponent {
 
-  constructor() { }
+  activeValue = '';
 
-  ngOnInit(): void {
+  @ViewChild('name') nameValue!: ElementRef;
+  @ViewChild('email') emailValue!: ElementRef;
+  @ViewChild('selectValue') selectValue!: ElementRef;
+
+  users: User[] = [];
+
+  constructor(private usersServise: ServiseUsers){
+
   }
+  
+  getSelect(){
+    const name = this.nameValue.nativeElement.value;
+    const email = this.emailValue.nativeElement.value;
+    const select = this.selectValue.nativeElement.value;
+    
+    const user = new User(name, email, this.activeValue, select);
 
+    this.usersServise.users.push(user);
+
+  }
 }
