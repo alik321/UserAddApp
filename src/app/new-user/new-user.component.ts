@@ -9,7 +9,11 @@ import { ServiseUsers } from '../shared/users.service';
 })
 export class NewUserComponent {
 
+  // name = '';
+  // email = '';
   activeValue = '';
+  // role = '';
+
 
   @ViewChild('name') nameValue!: ElementRef;
   @ViewChild('email') emailValue!: ElementRef;
@@ -17,18 +21,24 @@ export class NewUserComponent {
 
   users: User[] = [];
 
-  constructor(private usersServise: ServiseUsers){
-
-  }
+  constructor(private usersServise: ServiseUsers){}
   
   getSelect(){
     const name = this.nameValue.nativeElement.value;
     const email = this.emailValue.nativeElement.value;
     const select = this.selectValue.nativeElement.value;
-    
     const user = new User(name, email, this.activeValue, select);
 
     this.usersServise.users.push(user);
 
+    this.toClear()
+
+  }
+
+  toClear(){
+    const name = this.nameValue.nativeElement.value = '';
+    const email = this.emailValue.nativeElement.value = '';
+    const select = this.selectValue.nativeElement.value = '';
+    this.activeValue = '';
   }
 }

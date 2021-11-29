@@ -1,9 +1,10 @@
 <div class="card" style="width: 18rem;">
   <div class="card-body" *ngFor="let user of ServiseUsers.users">
-    <h5 class="card-title">{{user.name}}</h5>
-    <p class="card-text">{{user.email}}</p>
-    <p class="card-text">{{user.activeStatus}}</p>
-    <p class="card-text">{{user.role}}</p>
-    <button href="#" type="button" class="btn btn-primary">Go somewhere</button>
+    <h5 class="card-title">Name: {{ user.name }}</h5>
+    <p class="card-text">Email: {{ user.email }}</p>
+    <p class="card-text">Status: {{ user.activeStatus }}</p>
+    <p class="card-text">User type: {{ user.role }}</p>
+    <button href="#" type="button" class="btn btn-primary">Sign</button>
+    <hr>
   </div>
 </div>
