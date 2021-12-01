@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Group } from 'src/app/shared/groups.module';
+import { GroupeService } from 'src/app/shared/groups.service';
 
 @Component({
   selector: 'app-new-group',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewGroupComponent implements OnInit {
 
-  constructor() { }
+  name = '';
 
-  ngOnInit(): void {
-  }
+  constructor(private groupeService: GroupeService) { }
+
+  ngOnInit(): void {}
+
+  addGroup(){
+    const group = new Group(this.name);
+    this.groupeService.addGroup(group);
+    this.name = '';
+  };
 
 }

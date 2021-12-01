@@ -1,1 +1,10 @@
-<p>groups works!</p>
+<div (click)="change()">
+  <div class="card" style="width: 18rem;" *ngFor="let grup of groups; index as i" id="{{i}}" (click)="choose(i)">
+    <div class="card-header">
+      Name group: {{ grup.name }}
+    </div>
+    <ul class="list-group list-group-flush" *ngFor="let newUser of groupsToAdd">
+      <li class="list-group-item">{{newUser.name}}</li>
+    </ul>
+  </div>
+</div>

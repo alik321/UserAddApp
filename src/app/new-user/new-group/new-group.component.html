@@ -1,7 +1,7 @@
-<form class="grupe-form">
+<form class="grupe-form" (ngSubmit)="addGroup()">
   <div class="form-group">
     <label for="name">
-      Name Group: <input type="text" name="name" id="name" class="form-control">
+      Name Group: <input type="text" name="name" id="name" class="form-control" [(ngModel)]="name">
     </label>
   </div>
   <button type="submit" class="btn btn-primary">Create</button>
