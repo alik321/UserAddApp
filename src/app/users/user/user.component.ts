@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { User } from 'src/app/shared/users.module';
 import { ServiseUsers } from 'src/app/shared/users.service';
 
@@ -7,8 +7,16 @@ import { ServiseUsers } from 'src/app/shared/users.service';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
 })
-export class UserComponent{
+export class UserComponent implements OnInit{
 
-  constructor(public ServiseUsers:ServiseUsers){}
+  user: User[] = [];
 
+  constructor(private serviseUsers:ServiseUsers){}
+
+  ngOnInit(){
+    const users = this.serviseUsers.getUsers();
+    this.serviseUsers.userChange.subscribe((user: User[])=>{
+      this.user = user;
+    })
+  }
 }

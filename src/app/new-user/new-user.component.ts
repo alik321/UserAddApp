@@ -8,12 +8,7 @@ import { ServiseUsers } from '../shared/users.service';
   styleUrls: ['./new-user.component.css'],
 })
 export class NewUserComponent {
-
-  // name = '';
-  // email = '';
   activeValue = '';
-  // role = '';
-
 
   @ViewChild('name') nameValue!: ElementRef;
   @ViewChild('email') emailValue!: ElementRef;
@@ -29,8 +24,7 @@ export class NewUserComponent {
     const select = this.selectValue.nativeElement.value;
     const user = new User(name, email, this.activeValue, select);
 
-    this.usersServise.users.push(user);
-
+    this.usersServise.addUser(user);
     this.toClear()
 
   }
